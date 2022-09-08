@@ -5,17 +5,21 @@ using UnityEngine;
 public class RandomizarMonitor : MonoBehaviour
 {
     [SerializeField] int randomNumber;
-    [SerializeField] GameObject[] Monitores;
-    int monitoresEliminados;
+    [SerializeField] GameObject[] Pantallas;
+    int pantallasAzules = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Monitores = GameObject.FindGameObjectsWithTag("Monitor");
-        while (monitoresEliminados != 4)
+        Pantallas = GameObject.FindGameObjectsWithTag("Pantalla");
+        for (int i = 0; i < Pantallas.Length; i++)
+        {
+            Pantallas[i].SetActive(false);
+        }
+        while (pantallasAzules < 5)
         {
             GenerarNroAleatorio();
-            Monitores[randomNumber].SetActive(false);
-            monitoresEliminados++;
+            Pantallas[randomNumber].SetActive(true);
+            pantallasAzules++;
         }
     }
 
