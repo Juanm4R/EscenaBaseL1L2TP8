@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class CollisionWithComputers : MonoBehaviour
 {
+    bool colisiona;
+    [SerializeField] GameObject ArreglarUI;
+    GameObject pantalla;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (colisiona)
         {
-
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                pantalla.SetActive(false);
+            }
         }
     }
 
@@ -24,13 +30,16 @@ public class CollisionWithComputers : MonoBehaviour
         if (Collided.gameObject.CompareTag("Monitor"))
         {
             ArreglarUI.SetActive(true);
+            colisiona = true;
+            pantalla = Collided.gameObject.transform.GetChild(0).gameObject;
         }
     }
     void OnTriggerExit(Collider Collided)
     {
         if (Collided.gameObject.CompareTag("Monitor"))
         {
-            ArreglarUI.SetActive(true);
+            ArreglarUI.SetActive(false);
+            colisiona = false;
         }
     }
 }
