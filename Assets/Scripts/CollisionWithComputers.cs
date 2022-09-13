@@ -7,10 +7,11 @@ public class CollisionWithComputers : MonoBehaviour
     bool colisiona;
     [SerializeField] GameObject ArreglarUI;
     GameObject pantalla;
+    GameObject BoxMonitor;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -21,6 +22,9 @@ public class CollisionWithComputers : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 pantalla.SetActive(false);
+                BoxMonitor.GetComponent<BoxCollider>().enabled = false;
+                ArreglarUI.SetActive(false);
+                pantalla.tag = "Pantalla";
             }
         }
     }
@@ -32,6 +36,7 @@ public class CollisionWithComputers : MonoBehaviour
             ArreglarUI.SetActive(true);
             colisiona = true;
             pantalla = Collided.gameObject.transform.GetChild(0).gameObject;
+            BoxMonitor = Collided.gameObject;
         }
     }
     void OnTriggerExit(Collider Collided)

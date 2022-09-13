@@ -8,6 +8,7 @@ TagManager:
   - mesa
   - Monitor
   - Pantalla
+  - PantallaActiva
   layers:
   - Default
   - TransparentFX
